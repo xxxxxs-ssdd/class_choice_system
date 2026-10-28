@@ -1,0 +1,256 @@
+/*
+ * Arknights-style industrial terminal skin for the DSH Web GUI.
+ *
+ * Injected as a plain <style> index row, so it lands before the runtime theme
+ * sheets and before community skins. Every declaration is therefore written at
+ * `html:root body` specificity with `!important`: the shipped dark sheet, the
+ * light sheet, and token-forcing background plugins all lose to it, which keeps
+ * the art direction stable no matter what else the profile has loaded.
+ *
+ * Backgrounds stay translucent on purpose: when an artwork background plugin is
+ * present the art shows through warm graphite panels, and on a bare install the
+ * same values stack into a near-black terminal.
+ */
+
+html:root body,
+html:root body[data-ds-dark-theme] {
+  color-scheme: dark;
+
+  /* Skin-local palette. */
+  --ak-gold: #ffd76e;
+  --ak-gold-bright: #ffe9ab;
+  --ak-ink: #07080b;
+
+  /* Surfaces: warm graphite, translucent so artwork survives. */
+  --dsw-alias-bg-base: hsla(34, 16%, 9%, 0.58) !important;
+  --dsw-alias-bg-layer-1: hsla(34, 14%, 13%, 0.64) !important;
+  --dsw-alias-bg-layer-2: hsla(34, 12%, 17%, 0.68) !important;
+  --dsw-alias-bg-layer-3: hsla(34, 11%, 21%, 0.74) !important;
+  --dsw-alias-bg-overlay: hsla(34, 12%, 24%, 0.94) !important;
+  --dsw-alias-bg-mask-1: rgba(4, 4, 5, 0.68) !important;
+  --dsw-alias-bg-mask-2: rgba(4, 4, 5, 0.36) !important;
+  --dsw-alias-bg-mask-3: rgba(4, 4, 5, 0.6) !important;
+  --dsw-alias-bg-mask-drop: rgba(18, 16, 13, 0.88) !important;
+  --dsw-alias-bg-module-platform: hsla(34, 13%, 16%, 0.8) !important;
+  --dsw-alias-bg-multi-select: hsla(34, 12%, 20%, 0.86) !important;
+  --dsw-alias-bg-skeleton: rgba(255, 215, 110, 0.07) !important;
+  --dsw-alias-bg-document-preview: hsla(34, 16%, 9%, 0.9) !important;
+  --dsw-alias-bg-document-selection: rgba(255, 215, 110, 0.22) !important;
+
+  /* Text: warm off-white, never pure #fff. */
+  --dsw-alias-label-primary: #f7f3ea !important;
+  --dsw-alias-label-primary-bluish: #fbf7ee !important;
+  --dsw-alias-label-primary-dimmed: #ddd6c7 !important;
+  --dsw-alias-label-primary-inverted: #14120e !important;
+  --dsw-alias-label-primary-foreground: #14120e !important;
+  --dsw-alias-label-secondary: rgba(247, 243, 234, 0.82) !important;
+  --dsw-alias-label-tertiary: rgba(247, 243, 234, 0.64) !important;
+  --dsw-alias-label-caption: rgba(247, 243, 234, 0.48) !important;
+  --dsw-alias-label-dimmed: rgba(247, 243, 234, 0.32) !important;
+  --dsw-alias-label-shimmer: rgba(255, 215, 110, 0.42) !important;
+
+  /* Hairlines: every neutral line picks up the amber cast. */
+  --dsw-alias-border-l1: rgba(255, 215, 110, 0.1) !important;
+  --dsw-alias-border-l2: rgba(255, 215, 110, 0.16) !important;
+  --dsw-alias-border-l3: rgba(255, 215, 110, 0.23) !important;
+  --dsw-alias-border-l4: rgba(255, 215, 110, 0.32) !important;
+  --dsw-alias-border-inverted: rgba(255, 255, 255, 0.06) !important;
+  --dsw-alias-border-inverted2: rgba(255, 255, 255, 0.1) !important;
+
+  /* Brand and buttons. */
+  --dsw-alias-brand-primary: var(--ak-gold) !important;
+  --dsw-alias-brand-primary-invert: #14120e !important;
+  --dsw-alias-brand-text: var(--ak-gold-bright) !important;
+  --dsw-alias-brand-primary-new-colorprimary-new-color: #ffc53d !important;
+  --dsw-alias-button-primary-fill: var(--ak-gold) !important;
+  --dsw-alias-button-primary-hover: var(--ak-gold-bright) !important;
+  --dsw-alias-button-primary-dimmed: #6d5c2c !important;
+  --dsw-alias-button-contrast-fill: #f7f3ea !important;
+  --dsw-alias-button-elevated-fill: hsla(34, 12%, 18%, 0.9) !important;
+  --dsw-alias-button-floating-fill: hsla(34, 14%, 14%, 0.88) !important;
+  --dsw-alias-button-floating-hover: hsla(34, 12%, 22%, 0.92) !important;
+  --dsw-alias-button-ghost-active-fill: hsla(34, 12%, 24%, 0.9) !important;
+  --dsw-alias-button-ghost-active-hover: hsla(34, 12%, 28%, 0.92) !important;
+  --dsw-alias-button-ghost-active-border: var(--ak-gold) !important;
+  --dsw-alias-button-info-fill: #d8a341 !important;
+  --dsw-alias-button-info-hover: #e5b457 !important;
+  --dsw-alias-button-tool-bar-fill: rgba(28, 24, 19, 0.72) !important;
+  --dsw-alias-button-tool-bar-fill-invisible: rgba(28, 24, 19, 0.4) !important;
+  --dsw-alias-button-tool-bar-hover: rgba(42, 37, 29, 0.88) !important;
+
+  /* Interaction. */
+  --dsw-alias-interactive-bg-hover: rgba(255, 215, 110, 0.08) !important;
+  --dsw-alias-interactive-bg-hover-accent: rgba(255, 215, 110, 0.18) !important;
+  --dsw-alias-interactive-bg-hover-solid: hsla(34, 12%, 24%, 0.9) !important;
+  --dsw-alias-interactive-bg-active: rgba(255, 215, 110, 0.14) !important;
+  --dsw-alias-interactive-bg-hover-danger: rgba(224, 82, 74, 0.16) !important;
+
+  /* States keep their meaning, retuned for the warm dark surface. */
+  --dsw-alias-state-warn-primary: #ffb020 !important;
+  --dsw-alias-state-warn-secondary: var(--ak-gold) !important;
+  --dsw-alias-state-warn-label: #ffcf7a !important;
+  --dsw-alias-state-warn-tertiary: #3a3018 !important;
+  --dsw-alias-state-error-primary: #e0524a !important;
+  --dsw-alias-state-error-secondary: #ff7b72 !important;
+  --dsw-alias-state-success-primary: #57d9a3 !important;
+  --dsw-alias-state-success-secondary: #84f2c6 !important;
+  --dsw-alias-state-success-tertiary: #123a2c !important;
+  --dsw-alias-state-done-primary: #b98cff !important;
+  --dsw-alias-state-idle-primary: rgba(247, 243, 234, 0.4) !important;
+  --dsw-alias-state-business-primary: #6fb2ff !important;
+  --dsw-alias-state-business-tertiary: #17334f !important;
+
+  /* Links, markdown, code. */
+  --dsw-alias-link: var(--ak-gold) !important;
+  --dsw-alias-markdown-code-block: rgba(9, 8, 6, 0.76) !important;
+  --dsw-alias-markdown-code-block-banner: rgba(26, 22, 17, 0.86) !important;
+  --dsw-alias-markdown-inline-code: rgba(46, 39, 29, 0.86) !important;
+  --dsw-alias-markdown-tag: rgba(46, 39, 29, 0.86) !important;
+  --dsw-alias-markdown-placeholder: rgba(30, 26, 20, 0.86) !important;
+  --dsw-alias-markdown-citation: rgba(46, 39, 29, 0.86) !important;
+  --dsw-alias-markdown-code-segment-selected: rgba(46, 39, 29, 0.9) !important;
+  --dsw-alias-markdown-code-segment-unselected: rgba(20, 17, 13, 0.9) !important;
+
+  /* Chrome, menus, bubbles. */
+  --dsw-alias-scrollbar-bg-l1: rgba(255, 215, 110, 0.2) !important;
+  --dsw-alias-scrollbar-bg-l2: rgba(255, 215, 110, 0.28) !important;
+  --dsw-alias-scrollbar-hover-l1: rgba(255, 215, 110, 0.4) !important;
+  --dsw-alias-scrollbar-hover-l2: rgba(255, 215, 110, 0.55) !important;
+  --dsw-alias-menu-icon: #ddd6c7 !important;
+  --dsw-alias-menu-group-header-fill: rgba(16, 14, 11, 0.9) !important;
+  --dsw-alias-switch-thumb: var(--ak-gold) !important;
+  --dsw-alias-tooltip-bg: hsla(34, 12%, 20%, 0.96) !important;
+  --dsw-alias-tooltip-label: #f7f3ea !important;
+  --dsw-alias-toast-bg: hsla(34, 12%, 20%, 0.96) !important;
+  --dsw-alias-turn-trigger-bg: rgba(255, 215, 110, 0.06) !important;
+  --dsw-alias-turn-trigger-bg-hover: rgba(255, 215, 110, 0.12) !important;
+  --dsw-alias-settings-card-fill: hsla(34, 14%, 13%, 0.82) !important;
+  --dsw-alias-settings-card-stroke: rgba(255, 215, 110, 0.14) !important;
+
+  /* Specific slots the shipped shell and community skins both write. */
+  --dsw-specific-sidebar-fill: linear-gradient(180deg, rgba(22, 19, 14, 0.82) 0%, rgba(12, 11, 9, 0.62) 100%) !important;
+  --dsw-specific-sidebar-nav-item-active: hsla(34, 12%, 22%, 0.9) !important;
+  --dsw-specific-sidebar-nav-item-hover: hsla(34, 12%, 18%, 0.82) !important;
+  --dsw-specific-input-major: hsla(34, 12%, 20%, 0.86) !important;
+  --dsw-specific-menu: hsla(34, 12%, 22%, 0.96) !important;
+  --dsw-menu-surface-fill: hsla(34, 12%, 22%, 0.96) !important;
+  --dsw-specific-bubble: hsla(34, 12%, 20%, 0.86) !important;
+  --dsw-specific-bubble-highlight: hsla(34, 12%, 26%, 0.9) !important;
+  --dsw-specific-selector: hsla(34, 12%, 22%, 0.9) !important;
+  --dsw-specific-login-input: hsla(34, 12%, 20%, 0.9) !important;
+  --dsw-specific-tip: hsla(34, 12%, 22%, 0.9) !important;
+
+  /* Community background skins publish their own translucent slots inline on
+     the root element; redeclaring them on the body re-tints their panels
+     without touching their artwork layer. */
+  --dsh-any-op-bg: hsla(34, 16%, 10%, 0.56) !important;
+  --dsh-any-op-sidebar: hsla(34, 14%, 11%, 0.5) !important;
+  --dsh-any-op-card-1: hsla(34, 14%, 13%, 0.64) !important;
+  --dsh-any-op-card-2: hsla(34, 12%, 17%, 0.68) !important;
+  --dsh-any-op-card-3: hsla(34, 11%, 21%, 0.74) !important;
+  --dsh-any-op-menu: hsla(34, 12%, 22%, 0.96) !important;
+  --dsh-any-op-code: rgba(9, 8, 6, 0.76) !important;
+  --dsh-any-op-code-banner: rgba(26, 22, 17, 0.86) !important;
+  --dsh-any-op-input: hsla(34, 12%, 20%, 0.88) !important;
+  --dsh-any-op-menu-cordis: hsla(34, 12%, 22%, 0.94) !important;
+  --dsh-any-bg-settings-surface: hsla(34, 12%, 17%, 0.9) !important;
+  --dsh-any-bg-settings-layer-1: hsla(34, 14%, 13%, 0.86) !important;
+  --dsh-any-bg-settings-layer-2: hsla(34, 12%, 17%, 0.9) !important;
+  --dsh-any-bg-settings-layer-3: hsla(34, 11%, 21%, 0.92) !important;
+  --dsh-any-traj-layer-1: hsla(34, 14%, 13%, 0.8) !important;
+  --dsh-any-traj-layer-2: hsla(34, 12%, 17%, 0.84) !important;
+  --dsh-any-traj-layer-3: hsla(34, 11%, 21%, 0.86) !important;
+  --dsh-any-bg-rightbar: hsla(34, 14%, 11%, 0.55) !important;
+  --dsh-any-input-blur: blur(22px) !important;
+
+  /* Industrial typography: condensed DIN-like numerals, CJK keeps YaHei. */
+  --dsw-font-family: 'Bahnschrift', 'DIN Alternate', 'Segoe UI', 'Microsoft YaHei', 'PingFang SC',
+    'Hiragino Sans GB', sans-serif !important;
+  --dsw-font-family-brand: 'Bahnschrift', 'DIN Alternate', 'Segoe UI', 'Microsoft YaHei', sans-serif !important;
+
+  /* Cut corners: a terminal reads as machined, not rounded. */
+  --dsw-radius-xs: 1px !important;
+  --dsw-radius-sm: 2px !important;
+  --dsw-radius-md: 3px !important;
+  --dsw-radius-lg: 4px !important;
+  --dsw-radius-xl: 6px !important;
+  --dsw-radius-panel: 8px !important;
+}
+
+/* Amber text selection. */
+html:root body ::selection {
+  background: rgba(255, 215, 110, 0.26) !important;
+  color: #fffdf6 !important;
+}
+
+/* Scanline veil: sits above app chrome, below the boot splash, takes no input. */
+html:root body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 2147482000;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.16) 0,
+    rgba(0, 0, 0, 0.16) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.28;
+  animation: ak-veil-drift 9s linear infinite;
+}
+
+@keyframes ak-veil-drift {
+  from { background-position-y: 0; }
+  to { background-position-y: 4px; }
+}
+
+/* Fixed corner brackets and a status tag: the "operator terminal" frame. */
+.ak-hud {
+  position: fixed;
+  inset: 0;
+  z-index: 2147481000;
+  pointer-events: none;
+  font-family: 'Bahnschrift', 'DIN Alternate', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+.ak-hud__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 0 solid #ffd76e;
+  opacity: 0.45;
+}
+
+.ak-hud__corner--tl { top: 8px; left: 8px; border-top-width: 1px; border-left-width: 1px; }
+.ak-hud__corner--tr { top: 8px; right: 8px; border-top-width: 1px; border-right-width: 1px; }
+.ak-hud__corner--bl { bottom: 8px; left: 8px; border-bottom-width: 1px; border-left-width: 1px; }
+.ak-hud__corner--br { bottom: 8px; right: 8px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.ak-hud__tag {
+  position: absolute;
+  left: 30px;
+  bottom: 12px;
+  padding-left: 10px;
+  border-left: 2px solid rgba(255, 215, 110, 0.5);
+  color: rgba(255, 215, 110, 0.6);
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ak-hud__tag b {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+}
+
+@media (max-width: 720px) {
+  .ak-hud__tag { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:root body::after { animation: none; }
+}

@@ -1,0 +1,302 @@
+/*
+ * Boot overlay styling. Served as an index `style` row (not inline in the
+ * overlay markup): a <style> element nested in an injected HTML fragment is
+ * relocated by the parser, which unwraps the overlay.
+ */
+
+.ak-boot {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #06070a;
+  color: #eef2f8;
+  font-family: 'Bahnschrift', 'DIN Alternate', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  animation: ak-boot-failsafe 4.6s ease forwards;
+}
+
+.ak-boot * { box-sizing: border-box; }
+
+.ak-boot__backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(58% 42% at 50% 46%, rgba(255, 215, 110, 0.1), transparent 70%),
+    linear-gradient(180deg, #06070a 0%, #0b0d12 46%, #06070a 100%);
+}
+
+.ak-boot__grid {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    linear-gradient(rgba(255, 215, 110, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 110, 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(760px) rotateX(58deg) translateY(-4%);
+  transform-origin: 50% 42%;
+  mask-image: radial-gradient(58% 52% at 50% 46%, #000 12%, transparent 78%);
+  animation: ak-boot-grid 3.4s ease-out both;
+}
+
+.ak-boot__beam {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120vmax;
+  height: 1px;
+  transform: translate(-50%, -50%) scaleX(0);
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 110, 0.85), transparent);
+  box-shadow: 0 0 18px rgba(255, 215, 110, 0.45);
+  animation: ak-boot-beam 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.ak-boot__panel {
+  position: relative;
+  width: min(560px, 82vw);
+  padding: 0 4px;
+  margin-top: -4vh;
+}
+
+.ak-boot__emblem {
+  width: 74px;
+  height: 74px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 110, 0.28));
+  animation: ak-boot-emblem 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.ak-boot__emblem svg { display: block; width: 100%; height: 100%; }
+
+.ak-boot__hex {
+  fill: none;
+  stroke: #ffd76e;
+  stroke-width: 1.4;
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  animation: ak-boot-draw 1.05s cubic-bezier(0.5, 0, 0.2, 1) 0.24s forwards;
+}
+
+.ak-boot__core {
+  fill: rgba(255, 215, 110, 0.14);
+  stroke: #ffd76e;
+  stroke-width: 1.2;
+  opacity: 0;
+  animation: ak-boot-core 0.7s ease 0.85s forwards;
+}
+
+.ak-boot__ticks {
+  fill: none;
+  stroke: rgba(255, 215, 110, 0.55);
+  stroke-width: 1;
+  opacity: 0;
+  animation: ak-boot-core 0.7s ease 1s forwards;
+}
+
+.ak-boot__kicker {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  color: rgba(255, 215, 110, 0.9);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: ak-boot-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+}
+
+.ak-boot__title {
+  display: block;
+  margin-top: 12px;
+  font-size: clamp(30px, 4.6vw, 46px);
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #f7fafd;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: ak-boot-wipe 0.85s cubic-bezier(0.7, 0, 0.2, 1) 0.62s forwards;
+}
+
+.ak-boot__sub {
+  display: block;
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: rgba(238, 242, 248, 0.52);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: ak-boot-rise 0.7s ease 0.95s forwards;
+}
+
+.ak-boot__rule {
+  position: relative;
+  height: 1px;
+  margin: 22px 0 16px;
+  background: rgba(255, 215, 110, 0.16);
+  overflow: hidden;
+  opacity: 0;
+  animation: ak-boot-rise 0.5s ease 1.02s forwards;
+}
+
+.ak-boot__rule::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 110, 0.85), transparent);
+  transform: translateX(-100%);
+  animation: ak-boot-sweep 1.5s cubic-bezier(0.5, 0, 0.2, 1) 1.1s infinite;
+}
+
+.ak-boot__log {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  min-height: 18px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(238, 242, 248, 0.78);
+  opacity: 0;
+  animation: ak-boot-rise 0.5s ease 1.05s forwards;
+}
+
+.ak-boot__log i {
+  width: 5px;
+  height: 5px;
+  flex: none;
+  background: #ffd76e;
+  box-shadow: 0 0 8px rgba(255, 215, 110, 0.8);
+  animation: ak-boot-blink 1s steps(2, end) infinite;
+}
+
+.ak-boot__log span { font-variant-numeric: tabular-nums; }
+
+.ak-boot__track {
+  position: relative;
+  height: 2px;
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  opacity: 0;
+  animation: ak-boot-rise 0.5s ease 1.1s forwards;
+}
+
+.ak-boot__track b {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(255, 215, 110, 0.55), #ffd76e);
+  box-shadow: 0 0 12px rgba(255, 215, 110, 0.55);
+  transition: width 0.18s linear;
+}
+
+.ak-boot__meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(238, 242, 248, 0.36);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: ak-boot-rise 0.5s ease 1.15s forwards;
+}
+
+.ak-boot__meta span:last-child {
+  color: rgba(255, 215, 110, 0.72);
+  font-variant-numeric: tabular-nums;
+}
+
+.ak-boot__skip {
+  position: absolute;
+  right: 26px;
+  bottom: 22px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(238, 242, 248, 0.34);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: ak-boot-rise 0.6s ease 1.2s forwards;
+}
+
+.ak-boot__skip b { color: rgba(255, 215, 110, 0.6); font-weight: 400; }
+
+.ak-boot--out {
+  animation: ak-boot-out 0.72s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+.ak-boot--out .ak-boot__panel,
+.ak-boot--out .ak-boot__skip { opacity: 0; transition: opacity 0.24s ease; }
+
+.ak-boot--out::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffd76e;
+  box-shadow: 0 0 22px rgba(255, 215, 110, 0.9);
+  animation: ak-boot-cut 0.72s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+@keyframes ak-boot-failsafe {
+  0%, 88% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@keyframes ak-boot-out {
+  0% { clip-path: inset(0 0 0 0); opacity: 1; }
+  55% { clip-path: inset(0 0 0 0); opacity: 1; }
+  100% { clip-path: inset(0 0 100% 0); opacity: 1; }
+}
+
+@keyframes ak-boot-cut {
+  0% { top: 100%; opacity: 0; }
+  18% { opacity: 1; }
+  100% { top: 0; opacity: 0; }
+}
+
+@keyframes ak-boot-grid {
+  0% { opacity: 0; transform: perspective(760px) rotateX(62deg) translateY(4%) scale(1.08); }
+  35% { opacity: 1; }
+  100% { opacity: 0.55; transform: perspective(760px) rotateX(58deg) translateY(-4%) scale(1); }
+}
+
+@keyframes ak-boot-beam {
+  0% { transform: translate(-50%, -50%) scaleX(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scaleX(1); opacity: 0.55; }
+}
+
+@keyframes ak-boot-emblem {
+  0% { transform: translateY(8px) scale(0.94); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+@keyframes ak-boot-draw { to { stroke-dashoffset: 0; } }
+
+@keyframes ak-boot-core { to { opacity: 1; } }
+
+@keyframes ak-boot-rise {
+  0% { opacity: 0; transform: translateY(7px); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes ak-boot-wipe {
+  0% { opacity: 0; clip-path: inset(0 100% 0 0); }
+  20% { opacity: 1; }
+  100% { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes ak-boot-sweep {
+  0% { transform: translateX(-100%); }
+  62%, 100% { transform: translateX(100%); }
+}
+
+@keyframes ak-boot-blink { 50% { opacity: 0.15; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ak-boot,
+  .ak-boot *,
+  .ak-boot::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; }
+  .ak-boot--out { transition: opacity 0.2s ease; opacity: 0; }
+}

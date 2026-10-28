@@ -1,0 +1,101 @@
+{
+  "version": "demo-2026.1",
+  "teachers": [
+    {
+      "id": "T01",
+      "name": "陈默",
+      "title": "讲师",
+      "department": "计算机学院",
+      "research": ["程序语言", "编译优化"],
+      "office": "计算机楼 A302",
+      "email": "chenmo@example.edu.cn",
+      "teaching": ["CS1011 / 2025 秋", "CS1011 / 2026 春"],
+      "assessment": "平时 40%（作业 + 上机） / 期末 60%（闭卷）",
+      "source": "示例教师档案（演示数据）"
+    },
+    {
+      "id": "T02",
+      "name": "林知远",
+      "title": "副教授",
+      "department": "计算机学院",
+      "research": ["数据库系统", "数据管理"],
+      "office": "计算机楼 B415",
+      "email": "linzhiyuan@example.edu.cn",
+      "teaching": ["CS1021 / 2025 秋", "CS2041 / 2026 春"],
+      "assessment": "平时 30% / 课程项目 30% / 期末 40%",
+      "source": "示例教师档案（演示数据）"
+    },
+    {
+      "id": "T03",
+      "name": "苏槿",
+      "title": "教授",
+      "department": "计算机学院",
+      "research": ["体系结构", "操作系统"],
+      "office": "计算机楼 A511",
+      "email": "sujin@example.edu.cn",
+      "teaching": ["CS2011 / 2025 秋", "CS2021 / 2026 春"],
+      "assessment": "平时 20% / 实验 30% / 期末 50%",
+      "source": "示例教师档案（演示数据）"
+    },
+    {
+      "id": "T04",
+      "name": "周闻",
+      "title": "副教授",
+      "department": "计算机学院",
+      "research": ["计算机网络", "网络安全"],
+      "office": "计算机楼 B208",
+      "email": "zhouwen@example.edu.cn",
+      "teaching": ["CS2031 / 2025 秋", "CS2021 / 2026 春"],
+      "assessment": "平时 30% / 实验 20% / 期末 50%",
+      "source": "示例教师档案（演示数据）"
+    },
+    {
+      "id": "T05",
+      "name": "顾亦",
+      "title": "研究员",
+      "department": "人工智能研究院",
+      "research": ["机器学习", "多模态"],
+      "office": "智能楼 3F-12",
+      "email": "guyi@example.edu.cn",
+      "teaching": ["CS3011 / 2026 春", "CS3021 / 2026 秋"],
+      "assessment": "平时 20% / 大作业 40% / 期末 40%",
+      "source": "示例教师档案（演示数据）"
+    },
+    {
+      "id": "T06",
+      "name": "何书",
+      "title": "教授",
+      "department": "数学学院",
+      "research": ["分析学", "数学建模"],
+      "office": "理科楼 602",
+      "email": "heshu@example.edu.cn",
+      "teaching": ["MA1011 / 2025 秋", "MA1021 / 2026 春"],
+      "assessment": "平时 20% / 期中 30% / 期末 50%",
+      "source": "示例教师档案（演示数据）"
+    },
+    {
+      "id": "T07",
+      "name": "许南",
+      "title": "讲师",
+      "department": "外国语学院",
+      "research": ["学术英语"],
+      "office": "文科楼 214",
+      "email": "xunan@example.edu.cn",
+      "teaching": ["GE1011 / 2025 秋"],
+      "assessment": "平时 40% / 期末 60%",
+      "source": "示例教师档案（演示数据）"
+    },
+    {
+      "id": "T08",
+      "name": "程澈",
+      "title": "讲师",
+      "department": "马克思主义学院",
+      "research": ["思想政治教育"],
+      "office": "文科楼 508",
+      "email": "chengche@example.edu.cn",
+      "teaching": ["GE2011 / 2025 秋"],
+      "assessment": "平时 50% / 期末 50%",
+      "source": "示例教师档案（演示数据）"
+    }
+  ]
+}

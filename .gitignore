@@ -1,0 +1,12 @@
+# Harness checkout / build output (lives outside this repo, never commit it)
+node_modules/
+dist/
+lib/
+
+# Locally generated overlay with absolute paths
+profile/class-choice.overlay.yml
+
+# Logs and scratch
+*.log
+.DS_Store
+Thumbs.db

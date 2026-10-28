@@ -1,0 +1,150 @@
+{
+  "version": "demo-2026.1",
+  "note": "示例数据，仅用于联调插件行为；正式使用时替换为本校教务处发布的培养方案与课程库。",
+  "courses": [
+    {
+      "code": "CS1011",
+      "name": "程序设计基础",
+      "aliases": ["程设", "C语言", "程序设计"],
+      "credits": 4,
+      "hours": 64,
+      "nature": "必修",
+      "suggestedTerm": "大一上",
+      "modules": ["专业基础"],
+      "prerequisites": [],
+      "teacherIds": ["T01", "T02"]
+    },
+    {
+      "code": "CS1021",
+      "name": "数据结构",
+      "aliases": ["数构", "数据结构与算法"],
+      "credits": 4,
+      "hours": 64,
+      "nature": "必修",
+      "suggestedTerm": "大一下",
+      "modules": ["专业基础"],
+      "prerequisites": ["CS1011"],
+      "teacherIds": ["T02"]
+    },
+    {
+      "code": "CS2011",
+      "name": "计算机组成原理",
+      "aliases": ["计组", "组成原理"],
+      "credits": 3.5,
+      "hours": 56,
+      "nature": "必修",
+      "suggestedTerm": "大二上",
+      "modules": ["专业核心"],
+      "prerequisites": ["CS1011"],
+      "teacherIds": ["T03"]
+    },
+    {
+      "code": "CS2021",
+      "name": "操作系统",
+      "aliases": ["OS"],
+      "credits": 4,
+      "hours": 64,
+      "nature": "必修",
+      "suggestedTerm": "大二下",
+      "modules": ["专业核心"],
+      "prerequisites": ["CS1021", "CS2011"],
+      "teacherIds": ["T03", "T04"]
+    },
+    {
+      "code": "CS2031",
+      "name": "计算机网络",
+      "aliases": ["计网", "网络"],
+      "credits": 3,
+      "hours": 48,
+      "nature": "必修",
+      "suggestedTerm": "大三上",
+      "modules": ["专业核心"],
+      "prerequisites": ["CS1021"],
+      "teacherIds": ["T04"]
+    },
+    {
+      "code": "CS2041",
+      "name": "数据库系统",
+      "aliases": ["数据库", "DB"],
+      "credits": 3,
+      "hours": 48,
+      "nature": "限选",
+      "suggestedTerm": "大三上",
+      "modules": ["专业选修"],
+      "prerequisites": ["CS1021"],
+      "teacherIds": ["T02"]
+    },
+    {
+      "code": "CS3011",
+      "name": "人工智能导论",
+      "aliases": ["AI导论", "人工智能"],
+      "credits": 3,
+      "hours": 48,
+      "nature": "限选",
+      "suggestedTerm": "大二下",
+      "modules": ["专业选修", "方向模块"],
+      "prerequisites": ["CS1021", "MA1021"],
+      "teacherIds": ["T05"]
+    },
+    {
+      "code": "CS3021",
+      "name": "机器学习",
+      "aliases": ["ML"],
+      "credits": 3,
+      "hours": 48,
+      "nature": "任选",
+      "suggestedTerm": "大三下",
+      "modules": ["方向模块"],
+      "prerequisites": ["CS3011", "MA1021"],
+      "teacherIds": ["T05"]
+    },
+    {
+      "code": "MA1021",
+      "name": "高等数学（下）",
+      "aliases": ["高数下", "高数"],
+      "credits": 5,
+      "hours": 80,
+      "nature": "必修",
+      "suggestedTerm": "大一下",
+      "modules": ["数学与自然科学"],
+      "prerequisites": ["MA1011"],
+      "teacherIds": ["T06"]
+    },
+    {
+      "code": "MA1011",
+      "name": "高等数学（上）",
+      "aliases": ["高数上", "高数"],
+      "credits": 5,
+      "hours": 80,
+      "nature": "必修",
+      "suggestedTerm": "大一上",
+      "modules": ["数学与自然科学"],
+      "prerequisites": [],
+      "teacherIds": ["T06"]
+    },
+    {
+      "code": "GE1011",
+      "name": "大学英语（一）",
+      "aliases": ["大英一", "英语"],
+      "credits": 3,
+      "hours": 48,
+      "nature": "必修",
+      "suggestedTerm": "大一上",
+      "modules": ["通识教育"],
+      "prerequisites": [],
+      "teacherIds": ["T07"]
+    },
+    {
+      "code": "GE2011",
+      "name": "思想道德与法治",
+      "aliases": ["思修", "思政"],
+      "credits": 3,
+      "hours": 48,
+      "nature": "必修",
+      "suggestedTerm": "大一上",
+      "modules": ["通识教育"],
+      "prerequisites": [],
+      "teacherIds": ["T08"]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "version": "demo-2026.1",
+  "plan": {
+    "major": "计算机类",
+    "grade": 2026,
+    "totalCredits": 160,
+    "effectiveFrom": "2026-09-01",
+    "source": "示例培养方案（演示数据）",
+    "modules": [
+      { "name": "通识教育", "minCredits": 40, "note": "含思政、外语、体育、通识选修" },
+      { "name": "数学与自然科学", "minCredits": 30, "note": "高数、线代、概率论、大学物理" },
+      { "name": "专业基础", "minCredits": 24, "note": "程序设计、数据结构、离散数学等" },
+      { "name": "专业核心", "minCredits": 28, "note": "计组、操作系统、计网、编译原理等" },
+      { "name": "专业选修", "minCredits": 18, "note": "在专业选修池中修满" },
+      { "name": "方向模块", "minCredits": 12, "note": "人工智能 / 系统 / 网络方向任选其一为主方向" },
+      { "name": "实践环节", "minCredits": 8, "note": "课程设计、生产实习、毕业设计" }
+    ]
+  }
+}

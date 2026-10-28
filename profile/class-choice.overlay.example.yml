@@ -1,0 +1,13 @@
+# Example overlay. scripts/setup-dev.ps1 generates class-choice.overlay.yml with the
+# absolute paths of your checkout; this file documents the shape only.
+#
+# Load with:
+#   pnpm dsh --profile web --patch <this file> --no-open --port 3080
+#
+# Paths must be absolute and may use forward slashes on Windows.
+
+- insert:
+    - id: arknights-theme
+      name: '<REPO>/plugins/dsh-arknights-theme/src/index.ts'
+    - id: class-choice
+      name: '<REPO>/plugins/dsh-class-choice/src/index.ts'
