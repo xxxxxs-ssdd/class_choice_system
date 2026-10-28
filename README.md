@@ -52,10 +52,13 @@ pnpm dsh --profile web --patch <本仓库>/profile/class-choice.overlay.yml --no
 
 ## 插件一：明日方舟风格界面（dsh-arknights-theme）
 
-- **调色板**：暖石墨底 + 琥珀金强调色，覆盖 DSH 的 `--dsw-alias-*` 语义 token；半透明表面让底图（如果 profile 里有背景插件）透出。
+- **调色板**：暖石墨底 + 琥珀金强调色，覆盖 DSH 的 `--dsw-alias-*` 语义 token；表面半透明，让几何背景透出层次。
+- **几何背景**：纯 CSS / 内联 SVG 画出的技术图面——被遮罩的 88px 网格、右上斜切排线、左下网点、一条贯穿的斜向金线、右上六边形与缓慢自转的菱形、左下三角标尺；外加径向暗角压住四周。不请求任何图片资源，任意视口自适应。
 - **开场动画**：六边形徽标描边 → 标题遮罩展开 → 终端自检日志与进度条 → 上收式揭幕。点击 / 按键可跳过；`prefers-reduced-motion` 下自动退化为静默淡出；4.6 秒故障保护，即使脚本报错也不会锁死界面。
 - **常驻 HUD**：四角细金边、左下角 `CLASS CHOICE TERMINAL // 选课与培养方案` 状态条、极轻扫描线。
 - **无构建产物**：插件在 `apply()` 时读取本地 `theme.css` / `splash.css` / `splash.html` / `splash.js`，通过 `webserver/index-inject` 推送 `style` / `html` / `script` 行，因此不需要打包客户端 bundle，也不依赖 React。
+
+如果 profile 里装过立绘类背景插件，本皮肤会隐藏它的图片图层（`[data-dab-wp*]` 与 body 上的图片背景），只保留自己的几何图面；需要恢复立绘时删掉 `theme.css` 里对应的三行抑制规则即可。
 
 实现约束（改样式前请先读）：
 

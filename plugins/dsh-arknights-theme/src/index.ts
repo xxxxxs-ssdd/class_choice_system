@@ -51,6 +51,40 @@ const splashCss = assertNoDocumentTags(readFileSync(join(HERE, 'splash.css'), 'u
 const splashHtml = assertNoDocumentTags(readFileSync(join(HERE, 'splash.html'), 'utf8'), 'splash.html')
 const splashScript = assertNoDocumentTags(readFileSync(join(HERE, 'splash.js'), 'utf8'), 'splash.js')
 
+/**
+ * Backdrop geometry: a masked technical grid, a hatch wedge, halftone, a
+ * diagonal rule, and two outlined polygons. Everything is CSS or inline SVG so
+ * the skin never fetches an image asset.
+ */
+const GEO_HTML = [
+  '<div class="ak-geo" aria-hidden="true">',
+  '<div class="ak-geo__vignette"></div>',
+  '<div class="ak-geo__grid"></div>',
+  '<div class="ak-geo__hatch"></div>',
+  '<div class="ak-geo__dots"></div>',
+  '<div class="ak-geo__rule"></div>',
+  '<div class="ak-geo__mark ak-geo__mark--tr"><svg viewBox="0 0 600 600">',
+  '<g class="ak-geo__stroke">',
+  '<polygon points="300,40 525,170 525,430 300,560 75,430 75,170"></polygon>',
+  '<polygon class="ak-geo__stroke--soft" points="300,120 455,210 455,390 300,480 145,390 145,210"></polygon>',
+  '<path class="ak-geo__stroke--soft" d="M300 40V120M300 480V560M75 170L145 210M455 390L525 430M525 170L455 210M145 390L75 430"></path>',
+  '<circle class="ak-geo__stroke--soft" cx="300" cy="300" r="150"></circle>',
+  '</g>',
+  '<g class="ak-geo__stroke ak-geo__spin">',
+  '<path d="M300 210 L365 300 L300 390 L235 300 Z"></path>',
+  '</g>',
+  '</svg></div>',
+  '<div class="ak-geo__mark ak-geo__mark--bl"><svg viewBox="0 0 600 600">',
+  '<g class="ak-geo__stroke">',
+  '<path d="M60 520 L300 120 L540 520"></path>',
+  '<path class="ak-geo__stroke--soft" d="M150 520 L300 254 L450 520"></path>',
+  '<path d="M20 520H580"></path>',
+  '<path class="ak-geo__stroke--soft" d="M300 120V560M120 200H480"></path>',
+  '</g>',
+  '</svg></div>',
+  '</div>',
+].join('')
+
 const HUD_HTML = [
   '<div class="ak-hud" aria-hidden="true">',
   '<span class="ak-hud__corner ak-hud__corner--tl"></span>',
@@ -62,13 +96,14 @@ const HUD_HTML = [
 ].join('')
 
 /**
- * Register the skin, boot overlay, and HUD rows on every index render.
+ * Register the skin, boot overlay, backdrop, and HUD rows on every index render.
  * @param ctx - Plugin context supplied by the loader.
  */
 export function apply(ctx: ThemeContext): void {
   ctx.on('webserver/index-inject', (rows) => {
     rows.push({ kind: 'style', text: themeCss })
     rows.push({ kind: 'style', text: splashCss })
+    rows.push({ kind: 'html', placement: 'body', html: GEO_HTML })
     rows.push({ kind: 'html', placement: 'body', html: splashHtml })
     rows.push({ kind: 'script', placement: 'body', text: splashScript })
     rows.push({ kind: 'html', placement: 'body', html: HUD_HTML })

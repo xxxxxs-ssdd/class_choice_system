@@ -41,6 +41,31 @@
 2. **token 覆写要用 `html:root body ... !important`。** 运行时主题表在插件之后注入，社区背景插件同样用 `!important` 覆写同一批变量，权重不够就会被覆盖。
 3. **开场动画样式必须留在 `splash.css`。** 注入的 HTML 片段里如果内嵌 `<style>`，解析器会把它重定位到 head，覆盖层会被拆散。
 
+## 几何背景
+
+背景不是图片，而是画出来的：`GEO_HTML` + `theme.css` 的 `.ak-geo*` 规则组成六层——
+
+| 层 | 做法 |
+| --- | --- |
+| 暗角 | `radial-gradient` 压住四周，中心留亮 |
+| 技术网格 | 88px 双向细线，径向遮罩只在边缘显形 |
+| 斜切排线 | 右上角 56vw 区块，45° 排线 + 线性遮罩 |
+| 网点 | 左下角 11px 圆点阵列，径向遮罩 |
+| 斜向金线 | 140vw 长线，`rotate(-23deg)` 贯穿画面 |
+| 多边形 | 右上六边形（含 160s 缓慢自转的菱形）与左下三角标尺，内联 SVG 描边 |
+
+全部由 CSS 渐变或内联 SVG 生成，没有任何图片请求；`prefers-reduced-motion` 下停止自转。
+
 ## 与背景插件共存
 
-如果 profile 里已有背景类插件（例如在 body 上铺一张立绘），本皮肤的半透明表面会保留底图，只把色调统一到暖色系；在裸装 DSH 上，同一组数值叠加成接近纯黑的终端底色，不需要额外配置。
+profile 里如果装过立绘类背景插件（会往 body 铺图片、并注入 `[data-dab-wp*]` 图层），本皮肤默认**抑制这些图层**，只显示自己的几何图面——否则立绘会盖住网格与多边形。
+
+需要恢复立绘时，删掉 `theme.css` 里这三段即可：
+
+```css
+html:root body { background-image: ... !important; }
+[data-dab-wp], [data-dab-wp-layer] { display: none !important; }
+html:root body::before { content: none !important; }
+```
+
+在裸装 DSH 上无需任何配置，同一组数值直接呈现为深色几何终端。
